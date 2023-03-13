@@ -3,21 +3,14 @@ import ReactMarkdown from "react-markdown";
 import classes from "./post-content.module.css";
 import PostHeader from "./post-header";
 
-const DUMMY_POST = {
-  slug: "the-role-of-the-father",
-  title: "The Role of the Father in the Family",
-  image: "the-role-of-the-father.jpg",
-  content: "# This is the 1st post",
-  date: "2023-03-12",
-};
-
-const PostContent = () => {
-  const imagePath = `/images/posts/${DUMMY_POST.slug}/${DUMMY_POST.image}`;
+const PostContent = (props) => {
+  const { post } = props;
+  const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
   return (
     <article className={classes.content}>
-      <PostHeader title={DUMMY_POST.title} image={imagePath} />
-      <ReactMarkdown>{DUMMY_POST.content}</ReactMarkdown>
+      <PostHeader title={post.title} image={imagePath} />
+      <ReactMarkdown>{post.content}</ReactMarkdown>
     </article>
   );
 };
